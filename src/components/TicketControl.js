@@ -11,7 +11,9 @@ class TicketControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState;
+    this.setState((prevState) => ({
+      formShowing: !prevState.formShowing,
+    }));
   };
 
   render() {
@@ -29,7 +31,7 @@ class TicketControl extends React.Component {
     return (
       <React.Fragment>
         {currentlyDisplayed}
-        <button>{buttonText}</button>
+        <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }
