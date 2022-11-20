@@ -6,7 +6,14 @@ function TicketList(props) {
     <React.Fragment>
       <h2>Ticket List</h2>
       {props.ticketList.map((ticket) => (
-        <Ticket onClickingTicket={props.onSelectingTicket} names={ticket.names} location={ticket.location} issue={ticket.issue} />
+        <Ticket
+          onClickingTicket={props.onSelectingTicket}
+          names={ticket.names}
+          location={ticket.location}
+          issue={ticket.issue}
+          id={ticket.id}
+          key={ticket.id}
+        />
       ))}
       <hr />
     </React.Fragment>

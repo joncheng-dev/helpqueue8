@@ -1,13 +1,14 @@
 import React from "react";
 
 function TicketDetail(props) {
+  const { ticket } = props;
   return (
     <React.Fragment>
       <h2>Ticket Detail</h2>
-      <h3>{props.names}</h3>
-      <p>{props.location}</p>
+      <h3>{ticket.names}</h3>
+      <p>{ticket.location}</p>
       <p>
-        <em>{props.issue}</em>
+        <em>{ticket.issue}</em>
       </p>
     </React.Fragment>
   );

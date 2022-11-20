@@ -39,6 +39,7 @@ class TicketControl extends React.Component {
     this.setState({
       selected: selectedTicket,
     });
+    console.log(this.state.selected);
   };
 
   render() {
