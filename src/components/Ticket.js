@@ -4,11 +4,13 @@ function Ticket(props) {
   return (
     <React.Fragment>
       <hr />
-      <h3>{props.names}</h3>
-      <p>{props.location}</p>
-      <p>
-        <em>{props.issue}</em>
-      </p>
+      <div onClick={props.onClickingTicket}>
+        <h3>{props.names}</h3>
+        <p>{props.location}</p>
+        <p>
+          <em>{props.issue}</em>
+        </p>
+      </div>
     </React.Fragment>
   );
 }
