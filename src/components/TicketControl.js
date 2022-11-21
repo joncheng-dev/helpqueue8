@@ -2,6 +2,7 @@ import React from "react";
 import TicketList from "./TicketList";
 import NewTicketForm from "./NewTicketForm";
 import TicketDetail from "./TicketDetail";
+import EditTicketForm from "./EditTicketForm";
 
 class TicketControl extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class TicketControl extends React.Component {
       formShowing: false,
       mainTicketList: [],
       selected: null,
+      editing: false,
     };
   }
 
@@ -39,15 +41,33 @@ class TicketControl extends React.Component {
     this.setState({
       selected: selectedTicket,
     });
-    console.log(this.state.selected);
+  };
+
+  handleEditClick = () => {
+    this.setState({
+      editing: true,
+    });
+  };
+
+  handleEditTicket = (editedTicket) => {
+    const newMainTicketList = this.state.mainTicketList.filter((ticket) => this.state.selected.id !== ticket.id).concat(editedTicket);
+    this.setState({
+      formShowing: false,
+      mainTicketList: newMainTicketList,
+      selected: null,
+      editing: false,
+    });
   };
 
   render() {
     let currentlyDisplayed = null;
     let buttonText = null;
 
-    if (this.state.selected !== null) {
-      currentlyDisplayed = <TicketDetail ticket={this.state.selected} />;
+    if (this.state.editing) {
+      currentlyDisplayed = <EditTicketForm ticket={this.state.selected} onEditingTicket={this.handleEditTicket} />;
+      buttonText = "Return to Ticket List";
+    } else if (this.state.selected !== null) {
+      currentlyDisplayed = <TicketDetail ticket={this.state.selected} onClickingEdit={this.handleEditClick} />;
       buttonText = "Return to Ticket List";
     } else if (this.state.formShowing) {
       currentlyDisplayed = <NewTicketForm onAddingNewTicket={this.handleAddNewTicket} />;
