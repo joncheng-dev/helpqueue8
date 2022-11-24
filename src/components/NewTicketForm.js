@@ -1,6 +1,7 @@
 import React from "react";
 import ReusableForm from "./ReusableForm";
 import { v4 } from "uuid";
+import PropTypes from "prop-types";
 
 function NewTicketForm(props) {
   function collectUserInput(event) {
@@ -22,5 +23,9 @@ function NewTicketForm(props) {
     </React.Fragment>
   );
 }
+
+NewTicketForm.propTypes = {
+  onAddingNewTicket: PropTypes.func,
+};
 
 export default NewTicketForm;
